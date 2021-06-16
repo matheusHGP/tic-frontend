@@ -10,7 +10,7 @@ function entrar() {
         if (request.status >= 400) {
             document.getElementById("error-message").innerText = request.responseText
         } else {
-            window.location.pathname = "/home"
+            window.location.pathname = "/views/usuario.html"
         }
     }
 
