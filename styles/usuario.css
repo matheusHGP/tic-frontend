@@ -11,6 +11,7 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin: 1rem;
 }
 
 .card-content-header{
@@ -35,12 +36,26 @@ form > div{
 }
 
 form > div > div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+form > div > div > div{
     margin: 0 1rem;
 }
 
 .group-buttons{
     display: flex;
     margin: 0 1rem;
+}
+
+.card-content-button-action{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.container-table{
+    margin: 2rem
 }
 
 #conteudo-pesquisar{
