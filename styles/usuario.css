@@ -27,6 +27,16 @@ body{
     width: 100%;
 }
 
+.card-content-footer{
+    display: flex;
+    margin: 1rem;
+    justify-content: center;
+}
+
+.card-content-footer > div{
+    margin: 1rem;
+}
+
 label {
     margin: 0!important;
 }
@@ -52,10 +62,11 @@ form > div > div > div{
 .card-content-button-action{
     display: flex;
     flex-direction: column-reverse;
+    width: 6rem;
 }
 
 .container-table{
-    margin: 2rem
+    margin: 1rem
 }
 
 #conteudo-pesquisar{

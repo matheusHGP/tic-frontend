@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="../styles/usuario.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <script src="../controllers/usuarioController.js"></script>
+    <script src="../controllers/user/userSearchController.js"></script>
+    <script src="../controllers/user/userRegisterController.js"></script>
     <script src="../utils/api.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -31,18 +33,18 @@
                         <div>
                             <div>
                                 <label class="form-label">Nome</label>
-                                <input id="nome_usuario" type="text" class="form-control">
+                                <input id="nome-usuario" type="text" class="form-control">
                             </div>
                             <div>
                                 <label class="form-label">Email</label>
-                                <input id="email_usuario" type="email" class="form-control">
+                                <input id="email-usuario" type="email" class="form-control">
                             </div>
                             <div>
                                 <label class="form-label">Nivel</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select id="nivel-usuario" class="form-select" aria-label="Default select example">
                                     <option selected>Nível do usuario</option>
-                                    <option value="1">Basico</option>
-                                    <option value="2">Administrador</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Basico</option>
                                 </select>
                             </div>
                             <div class="card-content-button-action">
@@ -52,16 +54,17 @@
                     </div>
                 </form>
                 <div class="container-table">
-                    <table id="table-usuario2" class="table">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Nivel</th>
+                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
-                        <tbody id="table-usuario">
+                        <tbody id="table-usuario-content">
                         </tbody>
                     </table>
                 </div>
@@ -71,27 +74,37 @@
                 <form class="mb-5">
                     <div>
                         <div>
-                            <label class="form-label">Nome</label>
-                            <input id="nome_usuario" type="text" class="form-control">
-                        </div>
-                        <div>
-                            <label class="form-label">Email</label>
-                            <input id="email_usuario" type="email" class="form-control">
-                        </div>
-                        <div>
-                            <label class="form-label">Senha</label>
-                            <input id="senha_usuario" type="password" class="form-control">
-                        </div>
-                        <div>
-                            <label class="form-label">Nivel</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Nível do usuario</option>
-                                <option value="1">Basico</option>
-                                <option value="2">Administrador</option>
-                            </select>
+                            <div>
+                                <label class="form-label">Nome</label>
+                                <input id="name-user-register" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label">Email</label>
+                                <input id="email-user-register" type="email" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label">Senha</label>
+                                <input id="password-user-register" type="password" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label">Nivel</label>
+                                <select id="level-user-register" class="form-select" aria-label="Default select example">
+                                    <option selected>Nível do usuario</option>
+                                    <option value="1">Basico</option>
+                                    <option value="2">Administrador</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </form>
+                <div class="card-content-footer">
+                    <div class="card-content-button-action">
+                        <button type="button" class="btn btn-primary" onclick="cleanUsers()"> Limpar</button>
+                    </div>
+                    <div class="card-content-button-action">
+                        <button type="button" class="btn btn-primary" onclick="registerUser()"> Cadastrar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
