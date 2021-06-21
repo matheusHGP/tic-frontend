@@ -73,8 +73,8 @@ function getClientsSearchValues() {
   const nomeClient = document.getElementById("nome-client").value;
   const cpfClient = document.getElementById("cpf-client").value;
 
-  if (nomeClient) searchValues.push(`nomeClient=${nomeClient}`);
-  if (cpfClient) searchValues.push(`cpfClient=${cpfClient}`);
+  if (nomeClient) searchValues.push(`nomeCliente=${nomeClient}`);
+  if (cpfClient) searchValues.push(`cpfCliente=${cpfClient}`);
 
   if (searchValues.length) {
     searchPath = "?" + searchValues.join("&");
