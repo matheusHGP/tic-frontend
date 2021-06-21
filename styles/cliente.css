@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin: 1rem;
 }
 
 .card-content-header {
@@ -26,6 +27,16 @@ body {
   width: 100%;
 }
 
+.card-content-footer {
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+}
+
+.card-content-footer > div {
+  margin: 1rem;
+}
+
 label {
   margin: 0 !important;
 }
@@ -35,12 +46,27 @@ form > div {
 }
 
 form > div > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form > div > div > div {
   margin: 0 1rem;
 }
 
 .group-buttons {
   display: flex;
   margin: 0 1rem;
+}
+
+.card-content-button-action {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 6rem;
+}
+
+.container-table {
+  margin: 1rem;
 }
 
 #conteudo-pesquisar {
