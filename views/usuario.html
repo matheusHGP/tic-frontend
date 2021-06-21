@@ -74,6 +74,7 @@
                 <form class="mb-5">
                     <div>
                         <div>
+                            <input id="id-user-register" type="text" class="form-control">
                             <div>
                                 <label class="form-label">Nome</label>
                                 <input id="name-user-register" type="text" class="form-control">
@@ -90,8 +91,8 @@
                                 <label class="form-label">Nivel</label>
                                 <select id="level-user-register" class="form-select" aria-label="Default select example">
                                     <option selected>Nível do usuario</option>
-                                    <option value="1">Basico</option>
-                                    <option value="2">Administrador</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Basico</option>
                                 </select>
                             </div>
                         </div>
@@ -99,10 +100,10 @@
                 </form>
                 <div class="card-content-footer">
                     <div class="card-content-button-action">
-                        <button type="button" class="btn btn-primary" onclick="cleanUsers()"> Limpar</button>
+                        <button type="button" class="btn btn-primary" onclick="clearInputs()"> Limpar</button>
                     </div>
                     <div class="card-content-button-action">
-                        <button type="button" class="btn btn-primary" onclick="registerUser()"> Cadastrar</button>
+                        <button type="button" class="btn btn-primary" onclick="registerUser()"> Salvar</button>
                     </div>
                 </div>
             </div>

@@ -44,21 +44,40 @@ function createTableRowValues(user, index) {
     <td>${nivelUsuario}</td>
     <td>
     <div>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" onclick="onClickEditUser(${user.id}, '${user.nomeUsuario}', '${user.emailUsuario}', ${user.nivelUsuario})">
             <i class="bi bi-pencil"></i>
         </button>
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" onclick="onClickExcludeUser(${user.id})">
             <i class="bi bi-trash"></i>
         </button>
     </div>
     </td>
-    `;
-  return columnValue;
+    `
+    return columnValue
 }
 
-function onClickEditUser() {}
+function onClickEditUser(id, nome, email, nivel) {
+    document.getElementById('btn-group-pesquisar').className = "btn btn-secondary"
+    document.getElementById('btn-group-cadastrar').className = "btn btn-primary"
+    document.getElementById('conteudo-pesquisar').style.display = 'none'
+    document.getElementById('conteudo-cadastrar').style.display = 'block'
+    
+    document.getElementById('name-user-register').value = nome
+    document.getElementById('email-user-register').value = email
+    document.getElementById('level-user-register').value = nivel
+    document.getElementById('id-user-register').value = id
+    
+}
 
-function onClickExcludeUser() {}
+function excludeUserCallback(response){
+    alert(response)
+    getUsers()
+}
+
+function onClickExcludeUser(id) {
+    const path = `/usuario/${id}`
+    Api('DELETE', path, excludeUserCallback)
+}
 
 function getNivelUsuarioToString(nivelId) {
   const nivelString = {
