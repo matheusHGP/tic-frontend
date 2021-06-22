@@ -14,8 +14,8 @@ function registerWorker() {
 function getParams() {
     const params = {}
     params.nomeFuncionario = document.getElementById('name-func-register').value
-    params.emailFuncionario = document.getElementById('cargo-func-register').value
-    params.nivelFuncionario = document.getElementById('status-func-register').value
+    params.cargoFuncionario = document.getElementById('cargo-func-register').value
+    params.statusFuncionario = document.getElementById('status-func-register').value
     
     const id = parseInt(document.getElementById('id-worker-register').value)
     if(id){

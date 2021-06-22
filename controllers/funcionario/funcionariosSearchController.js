@@ -69,9 +69,13 @@ function onClickEditWorker(id, nome, cargo, status) {
     
 }
 
-function onClickExcludeUser() {
+function onClickExcludeWorker(id) {
+    const path = `/funcionario/${id}`;
+    Api("DELETE", path, excludeClientCallback);
+}
+
+function excludeClientCallback(response){
     alert(response)
-    getWokers()
 }
 
 function getstatusFuncionarioToString(nivelId) {
