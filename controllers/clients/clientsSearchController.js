@@ -33,7 +33,6 @@ function getClientsCallback(clients) {
   });
 
   document.getElementById("table-content-client").innerHTML = tableRow;
-  console.log(tableRow);
 }
 
 function createTableRow(rowValues) {
@@ -54,17 +53,68 @@ function createTableRowValues(client, index) {
     <td>${client.numeroEnderecoCliente}</td>
     <td>
     <div>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" onclick="onClickEditClient(${
+          client.id
+        },'${client.nomeCliente}',
+                    '${client.cpfCliente}',
+                    '${client.telefoneCliente}',
+                    '${client.emailCliente}',
+                    '${client.cepEnderecoCliente}',
+                    '${client.logradouroEnderecoCliente}',
+                    '${client.bairroEnderecoCliente}',
+                    '${client.numeroEnderecoCliente}')">
             <i class="bi bi-pencil"></i>
         </button>
-        <button class="btn btn-danger">
+        <button class="btn btn-danger" onclick="onClickExcludeClient(${
+          client.id
+        })">
             <i class="bi bi-trash"></i>
         </button>
     </div>
     </td>
     `;
-  console.log(client);
   return columnValue;
+}
+
+function onClickEditClient(
+  id,
+  nomeCliente,
+  cpfCliente,
+  telefoneCliente,
+  emailCliente,
+  cepEnderecoCliente,
+  logradouroEnderecoCliente,
+  bairroEnderecoCliente,
+  numeroEnderecoCliente
+) {
+  document.getElementById("btn-group-pesquisar").className =
+    "btn btn-secondary";
+  document.getElementById("btn-group-cadastrar").className = "btn btn-primary";
+  document.getElementById("conteudo-pesquisar").style.display = "none";
+  document.getElementById("conteudo-cadastrar").style.display = "block";
+
+  document.getElementById("nome-client-register").value = nomeCliente;
+  document.getElementById("cpf-client-register").value = cpfCliente;
+  document.getElementById("telefone-client-register").value = telefoneCliente;
+  document.getElementById("email-client-register").value = emailCliente;
+  document.getElementById("cep-client-register").value = cepEnderecoCliente;
+  document.getElementById("logradouro-client-register").value =
+    logradouroEnderecoCliente;
+  document.getElementById("bairro-client-register").value =
+    bairroEnderecoCliente;
+  document.getElementById("numero-client-register").value =
+    numeroEnderecoCliente;
+  document.getElementById("id-client-register").value = id;
+}
+
+function excludeClientCallback(response) {
+  alert(response);
+  getClients();
+}
+
+function onClickExcludeClient(id) {
+  const path = `/clientes/${id}`;
+  Api("DELETE", path, excludeClientCallback);
 }
 
 function getClientsSearchValues() {

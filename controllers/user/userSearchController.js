@@ -19,6 +19,11 @@ function toggleButton(button) {
   }
 }
 
+function createTableRow(rowValues) {
+  let tableRow = "<tr>" + rowValues + "</tr>";
+  return tableRow;
+}
+
 function getUsers() {
   const path = "/usuario" + getUsersSeachValues();
   Api("GET", path, getUsersCallback);
@@ -34,7 +39,6 @@ function getUsersCallback(users) {
   document.getElementById("table-usuario-content").innerHTML = tableRow;
 }
 
-
 function createTableRowValues(user, index) {
   const nivelUsuario = getNivelUsuarioToString(user.nivelUsuario);
   const columnValue = `
@@ -44,7 +48,9 @@ function createTableRowValues(user, index) {
     <td>${nivelUsuario}</td>
     <td>
     <div>
-        <button class="btn btn-primary" onclick="onClickEditUser(${user.id}, '${user.nomeUsuario}', '${user.emailUsuario}', ${user.nivelUsuario})">
+        <button class="btn btn-primary" onclick="onClickEditUser(${user.id}, '${
+    user.nomeUsuario
+  }', '${user.emailUsuario}', ${user.nivelUsuario})">
             <i class="bi bi-pencil"></i>
         </button>
         <button class="btn btn-danger" onclick="onClickExcludeUser(${user.id})">
@@ -52,31 +58,31 @@ function createTableRowValues(user, index) {
         </button>
     </div>
     </td>
-    `
-    return columnValue
+    `;
+  return columnValue;
 }
 
 function onClickEditUser(id, nome, email, nivel) {
-    document.getElementById('btn-group-pesquisar').className = "btn btn-secondary"
-    document.getElementById('btn-group-cadastrar').className = "btn btn-primary"
-    document.getElementById('conteudo-pesquisar').style.display = 'none'
-    document.getElementById('conteudo-cadastrar').style.display = 'block'
-    
-    document.getElementById('name-user-register').value = nome
-    document.getElementById('email-user-register').value = email
-    document.getElementById('level-user-register').value = nivel
-    document.getElementById('id-user-register').value = id
-    
+  document.getElementById("btn-group-pesquisar").className =
+    "btn btn-secondary";
+  document.getElementById("btn-group-cadastrar").className = "btn btn-primary";
+  document.getElementById("conteudo-pesquisar").style.display = "none";
+  document.getElementById("conteudo-cadastrar").style.display = "block";
+
+  document.getElementById("name-user-register").value = nome;
+  document.getElementById("email-user-register").value = email;
+  document.getElementById("level-user-register").value = nivel;
+  document.getElementById("id-user-register").value = id;
 }
 
-function excludeUserCallback(response){
-    alert(response)
-    getUsers()
+function excludeUserCallback(response) {
+  alert(response);
+  getUsers();
 }
 
 function onClickExcludeUser(id) {
-    const path = `/usuario/${id}`
-    Api('DELETE', path, excludeUserCallback)
+  const path = `/usuario/${id}`;
+  Api("DELETE", path, excludeUserCallback);
 }
 
 function getNivelUsuarioToString(nivelId) {
