@@ -5,46 +5,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles/Funcionario.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/funcionario.css">
+    <script src="../controllers/funcionario/funcionariosRegisterController.js"></script>
+    <script src="../controllers/funcionario/funcionariosSearchController.js"></script>
+    <script src="../utils/api.js"></script>
     <title> Cadastrar Funcioário </title>
 </head>
 
 <body>
     <div class="container">
-        <center>
-            <h3> Cadastro Funcionário </h3>
-        </center>
-        <div class="pesquisaCadastar">
-            <button class="bt1" type="button"> Pesquisar </button>
-            <button class="bt1" type="button"> Cadastrar </button>
-        </div>
-        <div class="content">
-            <div class="cadastro">
-                <div class="nome">
-                    <label for="form-label label"> Nome completo </label>
-                    <input type="text" class="form-control" id="nome">
-                </div>
-                <div class="cargo">
-                    <label for="form-label label"> Cargo </label>
-                    <input type="text" class="form-control" id="cargo">
-                </div>
-                <div class="status">
-                    <label for="form-label label"> Status </label>
-                    <input type="text" class="form-control" id="status">
+        <div class="card-content">
+            <div class="mb-3 card-content-header">
+                <h1>Cadastro de Funcionário </h1>
+                <div class="group-buttons ">
+                    <button id="btn-group-pesquisar" type="button" class="btn btn-primary"
+                        onclick="toggleButton('pesquisar')">Pesquisar</button>
+                    <button id="btn-group-cadastrar" type="button" class="btn btn-secondary"
+                        onclick="toggleButton('cadastrar')">Cadastrar</button>
                 </div>
             </div>
-            <div class="user">
-                <center>
-                    <img src="../images/user.png" alt="user">
-                </center>
-                <div class="button1">
-                    <button> botão </button>
-                    <button> botão </button>
+            <div id="conteudo-pesquisar" class="card-content-body">
+                <form class="mb-5">
+                    <div>
+                        <div>
+                            <div>
+                                <label class="form-label"> Nome Completo </label>
+                                <input id="nome-funcionario" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label"> Cargo </label>
+                                <input id="cargo-funcionario" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label"> Status </label>
+                                <select id="status-funcionario" class="form-select" aria-label="Default select example">
+                                    <option selected> Status do Funcionário </option>
+                                    <option value="1"> Livre </option>
+                                    <option value="2"> Ocupado </option>
+                                </select>
+                            </div>
+                            <div class="card-content-button-action">
+                                <button type="button" class="btn btn-primary" onclick="getFuncionarios()">
+                                    Pesquisar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="container-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Cargo</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-funcionario-content">
+                        </tbody>
+                    </table>
                 </div>
-                <div class="button1">
-                    <button> botão </button>
-                    <button> botão </button>
+            </div>
+
+            <div id="conteudo-cadastrar" class="card-content-body">
+                <form class="mb-5">
+                    <div>
+                        <div>
+                            <input id="id-worker-register" type="text" class="form-control">
+                            <div>
+                                <label class="form-label"> Nome Completo </label>
+                                <input id="name-func-register" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label">Cargo</label>
+                                <input id="cargo-func-register" type="text" class="form-control">
+                            </div>
+                            <div>
+                                <label class="form-label">Status</label>
+                                <select id="status-func-register" class="form-select">
+                                    <option selected>Status do Funcionário</option>
+                                    <option value="1">Livre</option>
+                                    <option value="2">Ocupado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card-content-footer">
+                    <div class="card-content-button-action">
+                        <button type="button" class="btn btn-primary" onclick="cleanWorker()"> Limpar</button>
+                    </div>
+                    <div class="card-content-button-action">
+                        <button type="button" class="btn btn-primary" onclick="registerWorker()"> Cadastrar</button>
+                    </div>
                 </div>
             </div>
         </div>
